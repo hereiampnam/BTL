@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, TodoMain.class);
+                        startActivity(intent);
                     }
                 } else {
                     if (!Account.isValidPassword(password)) {
