@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (Account.isValidEmail(email) && Account.isValidPassword(password)) {
                     Account account = new Account(email, password);
-                    if (!accountRepository.checkExistAccount(account)) {
+
+                    if (!accountRepository.checkExistAccount(account.getEmail())) {
                         Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();

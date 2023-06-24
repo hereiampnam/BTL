@@ -21,25 +21,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SignUpActivity"
-            >
 
+        <activity android:name=".SignUpActivity">
         </activity>
-        <activity
-            android:name=".Account"
-            >
 
+        <activity android:name=".Account">
         </activity>
-        <activity
-            android:name=".AccountRepository"
-            >
 
+        <activity android:name=".AccountRepository">
         </activity>
-        <activity
-            android:name=".TodoMain"
-            >
 
+        <activity android:name=".TodoMain">
+        </activity>
+
+        <activity android:name=".AccountDatabaseHelper">
+        </activity>
+
+        <activity android:name=".TodoDatabaseHelper">
+        </activity>
+        <activity android:name=".DatabaseHelper">
         </activity>
     </application>
 
