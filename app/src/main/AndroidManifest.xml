@@ -25,22 +25,32 @@
         <activity android:name=".SignUpActivity">
         </activity>
 
-        <activity android:name=".Account">
+        <activity android:name=".Account.Account">
         </activity>
 
-        <activity android:name=".AccountRepository">
+        <activity android:name=".Account.AccountDatabaseHelper">
         </activity>
 
-        <activity android:name=".TodoMain">
+        <activity android:name=".Account.AccountRepository">
         </activity>
 
-        <activity android:name=".AccountDatabaseHelper">
+<!--Todo Package-->
+
+        <activity android:name=".Todo.TodoMain">
         </activity>
 
-        <activity android:name=".TodoDatabaseHelper">
+        <activity android:name=".Todo.TodoListAdapter">
         </activity>
+
+        <activity android:name=".Todo.TodoDatabaseHelper">
+        </activity>
+
+        <activity android:name=".Todo.TodoRepository">
+        </activity>
+
         <activity android:name=".DatabaseHelper">
         </activity>
+
     </application>
 
 </manifest>

@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.btl.Account.Account;
+import com.example.btl.Account.AccountRepository;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private Button btnLogin, btnSignup;

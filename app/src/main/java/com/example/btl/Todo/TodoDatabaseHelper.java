@@ -1,4 +1,4 @@
-package com.example.btl;
+package com.example.btl.Todo;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,8 +14,11 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
             "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             COLUMN_TODO_ITEM_INFORMATION + " TEXT)";
 
+    private Context context;
+
     public TodoDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void createTodoTable(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE_TODO);
+    public Context getContext() {
+        return context;
     }
 }
