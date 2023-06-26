@@ -1,29 +1,26 @@
 package com.example.btl.Todo;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
+import android.content.Context;
+
 import java.util.List;
 
 public class Task {
-    private static final String TABLE_NAME = "tasks";
-    private static final String COLUMN_TASK_ID = "task_id";
-    private static final String COLUMN_TASK_TITLE = "task_title";
-    private static final String COLUMN_DATE = "date";
-    private static final String COLUMN_TASK_DESCRIPTION = "task_description";
-    private static final String COLUMN_IS_COMPLETE = "is_complete";
-    private static final String COLUMN_FIRST_ALARM_TIME = "first_alarm_time";
-    private static final String COLUMN_SECOND_ALARM_TIME = "second_alarm_time";
-    private static final String COLUMN_LAST_ALARM = "last_alarm";
-    private static final String COLUMN_EVENT = "event";
+//    private static final String TABLE_NAME = "tasks";
+//    private static final String COLUMN_TASK_ID = "task_id";
+//    private static final String COLUMN_TASK_TITLE = "task_title";
+//    private static final String COLUMN_DATE = "date";
+//    private static final String COLUMN_TASK_DESCRIPTION = "task_description";
+//    private static final String COLUMN_IS_COMPLETE = "is_complete";
+//    private static final String COLUMN_FIRST_ALARM_TIME = "first_alarm_time";
+//    private static final String COLUMN_SECOND_ALARM_TIME = "second_alarm_time";
+//    private static final String COLUMN_LAST_ALARM = "last_alarm";
+//    private static final String COLUMN_EVENT = "event";
 
     private int taskId;
     private String taskTitle;
     private String date;
+    private String month;
     private String taskDescription;
     private boolean isComplete;
     private String firstAlarmTime;

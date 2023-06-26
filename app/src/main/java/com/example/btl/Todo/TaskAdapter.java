@@ -49,17 +49,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public class TaskViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
         private TextView descriptionTextView;
+        private TextView dateTextView;
+//        private TextView monthTextView;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            dateTextView=itemView.findViewById(R.id.dateTextView);
+//            monthTextView=itemView.findViewById(R.id.monthTextView);
 
         }
 
         public void bind(@NonNull Task task) {
             titleTextView.setText(task.getTaskTitle());
             descriptionTextView.setText(task.getTaskDescription());
+            dateTextView.setText(task.getDate());
         }
     }
 }
