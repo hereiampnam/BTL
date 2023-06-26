@@ -83,7 +83,7 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
             task.setTaskTitle(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)));
             task.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
             task.setTaskDescription(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_DESCRIPTION)));
-            task.setComplete(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_COMPLETE)) == 1);
+            task.setComplete(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_COMPLETE)) == 0);
             task.setFirstAlarmTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_ALARM_TIME)));
             task.setSecondAlarmTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SECOND_ALARM_TIME)));
             task.setLastAlarm(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_ALARM)));
@@ -97,7 +97,16 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
 
         return taskList;
     }
+    public void updateTaskStatus(Task task) {
+        SQLiteDatabase db = getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_IS_COMPLETE, task.isComplete() ? 1 : 0);
+
+        db.update(TABLE_NAME, values, COLUMN_TASK_ID + "=?", new String[]{String.valueOf(task.getTaskId())});
+
+        db.close();
+    }
     public void deleteTask(int taskId) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_TASK_ID + "=?", new String[]{String.valueOf(taskId)});

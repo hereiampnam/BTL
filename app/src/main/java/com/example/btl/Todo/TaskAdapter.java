@@ -4,12 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.btl.R;
-
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
@@ -30,17 +29,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return viewHolder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         Task task = taskList.get(position);
-
         holder.bind(task);
     }
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
+
     @Override
     public int getItemCount() {
         return taskList.size();
@@ -50,21 +48,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private TextView titleTextView;
         private TextView descriptionTextView;
         private TextView dateTextView;
-//        private TextView monthTextView;
+        private Button statusBtn;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
-            dateTextView=itemView.findViewById(R.id.dateTextView);
-//            monthTextView=itemView.findViewById(R.id.monthTextView);
-
+            dateTextView = itemView.findViewById(R.id.dateTextView);
+            statusBtn = itemView.findViewById(R.id.statusBTN);
         }
 
         public void bind(@NonNull Task task) {
             titleTextView.setText(task.getTaskTitle());
             descriptionTextView.setText(task.getTaskDescription());
             dateTextView.setText(task.getDate());
+            statusBtn.setText(task.status(task.isComplete()));
+            statusBtn.setOnClickListener(v -> {
+                task.setComplete(!task.isComplete());
+                statusBtn.setText(task.status(task.isComplete()));
+                task.updateTaskStatus(context);
+            });
         }
     }
 }
