@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class AccountDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "todo_app.db";
+    private static final String DATABASE_NAME = "todo_app1.db";
     private static final int DATABASE_VERSION = 1;
 
     public static final String TABLE_ACCOUNT = "accounts";

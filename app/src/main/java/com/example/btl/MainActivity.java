@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.btl.Account.Account;
 import com.example.btl.Account.AccountRepository;
-import com.example.btl.Todo.TodoMain;
+import com.example.btl.Todo.TaskList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, TodoMain.class);
+                        Intent intent = new Intent(MainActivity.this, TaskList.class);
                         startActivity(intent);
                     }
                 } else {

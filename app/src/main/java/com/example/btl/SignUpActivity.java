@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.btl.Account.Account;
 import com.example.btl.Account.AccountRepository;
+import com.example.btl.Todo.TaskList;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -45,7 +46,9 @@ public class SignUpActivity extends AppCompatActivity {
                     if (Account.isValidEmail(email_edt.getText().toString()) && Account.isValidPassword(pw1_edt.getText().toString())) {
                         Account account = new Account(email_edt.getText().toString(), pw1_edt.getText().toString());
                         accountRepository.addAccount(email_edt.getText().toString(),pw1_edt.getText().toString());
-                        Toast.makeText(getBaseContext(), "OK", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getBaseContext(), "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
                     }

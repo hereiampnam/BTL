@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -35,21 +37,20 @@
         </activity>
 
 <!--Todo Package-->
-
-        <activity android:name=".Todo.TodoMain">
+        <activity android:name=".Todo.Task">
+        </activity>
+        <activity android:name=".Todo.TaskAdapter">
         </activity>
 
-        <activity android:name=".Todo.TodoListAdapter">
+        <activity android:name=".Todo.TaskDatabaseHelper">
         </activity>
 
-        <activity android:name=".Todo.TodoDatabaseHelper">
+        <activity android:name=".Todo.TaskList">
+        </activity>
+        <activity android:name=".Todo.TaskAdd">
         </activity>
 
-        <activity android:name=".Todo.TodoRepository">
-        </activity>
 
-        <activity android:name=".DatabaseHelper">
-        </activity>
 
     </application>
 
