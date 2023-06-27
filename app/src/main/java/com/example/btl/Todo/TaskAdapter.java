@@ -1,6 +1,7 @@
 package com.example.btl.Todo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private TextView descriptionTextView;
         private TextView dateTextView;
         private Button statusBtn;
+        private Button optionBtn;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +58,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             statusBtn = itemView.findViewById(R.id.statusBTN);
+            optionBtn = itemView.findViewById(R.id.optionBtn);
         }
 
         public void bind(@NonNull Task task) {
@@ -67,6 +70,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 task.setComplete(!task.isComplete());
                 statusBtn.setText(task.status(task.isComplete()));
                 task.updateTaskStatus(context);
+            });
+            optionBtn.setOnClickListener(v -> {
+                Intent intent = new Intent(context, TaskUpdate.class);
+                intent.putExtra("taskId", task.getTaskId());
+                context.startActivity(intent);
             });
         }
     }

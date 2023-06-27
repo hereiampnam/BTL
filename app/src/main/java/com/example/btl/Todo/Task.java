@@ -120,14 +120,25 @@ public class Task {
         TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
         return dbHelper.getAllTasks();
     }
+    public static Task getTaskById(Context context, int taskId) {
+        TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
+        return dbHelper.getTaskById(taskId);
+    }
 
     public void delete(Context context) {
         TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
         dbHelper.deleteTask(taskId);
     }
 
+    public void update(Context context) {
+        TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
+        dbHelper.updateTask(this);
+    }
+
     public void updateTaskStatus(Context context) {
         TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
         dbHelper.updateTaskStatus(this);
     }
+
+
 }

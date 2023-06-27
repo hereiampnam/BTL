@@ -88,7 +88,6 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
             task.setSecondAlarmTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SECOND_ALARM_TIME)));
             task.setLastAlarm(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_ALARM)));
             task.setEvent(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT)));
-
             taskList.add(task);
         }
 
@@ -97,6 +96,55 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
 
         return taskList;
     }
+    public Task getTaskById(int taskId) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {COLUMN_TASK_ID, COLUMN_TASK_TITLE, COLUMN_DATE, COLUMN_TASK_DESCRIPTION,
+                COLUMN_IS_COMPLETE, COLUMN_FIRST_ALARM_TIME, COLUMN_SECOND_ALARM_TIME, COLUMN_LAST_ALARM, COLUMN_EVENT};
+
+        String selection = COLUMN_TASK_ID + "=?";
+        String[] selectionArgs = {String.valueOf(taskId)};
+
+        Cursor cursor = db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+
+        Task task = null;
+        if (cursor.moveToFirst()) {
+            task = new Task();
+            task.setTaskId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TASK_ID)));
+            task.setTaskTitle(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)));
+            task.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
+            task.setTaskDescription(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_DESCRIPTION)));
+            task.setComplete(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_COMPLETE)) == 1);
+            task.setFirstAlarmTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_ALARM_TIME)));
+            task.setSecondAlarmTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SECOND_ALARM_TIME)));
+            task.setLastAlarm(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_ALARM)));
+            task.setEvent(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT)));
+        }
+
+        cursor.close();
+        db.close();
+
+        return task;
+    }
+
+    public void updateTask(Task task) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TASK_TITLE, task.getTaskTitle());
+        values.put(COLUMN_DATE, task.getDate());
+        values.put(COLUMN_TASK_DESCRIPTION, task.getTaskDescription());
+        values.put(COLUMN_IS_COMPLETE, task.isComplete() ? 1 : 0);
+        values.put(COLUMN_FIRST_ALARM_TIME, task.getFirstAlarmTime());
+        values.put(COLUMN_SECOND_ALARM_TIME, task.getSecondAlarmTime());
+        values.put(COLUMN_LAST_ALARM, task.getLastAlarm());
+        values.put(COLUMN_EVENT, task.getEvent());
+
+        db.update(TABLE_NAME, values, COLUMN_TASK_ID + "=?", new String[]{String.valueOf(task.getTaskId())});
+
+        db.close();
+    }
+
     public void updateTaskStatus(Task task) {
         SQLiteDatabase db = getWritableDatabase();
 
@@ -107,6 +155,7 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
 
         db.close();
     }
+
     public void deleteTask(int taskId) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_TASK_ID + "=?", new String[]{String.valueOf(taskId)});
