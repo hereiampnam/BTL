@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="10dp"
             android:text=""
             android:textColor="#FFFFFF"
             android:textSize="16sp"
@@ -84,23 +84,25 @@
 
         <Button
             android:id="@+id/optionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:text="Update"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/ca"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
             app:layout_constraintTop_toBottomOf="@+id/statusBTN" />
 
         <Button
             android:id="@+id/deleteBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            android:text="Del"
-            app:layout_constraintEnd_toStartOf="@+id/statusBTN"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/trashbin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/optionBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
