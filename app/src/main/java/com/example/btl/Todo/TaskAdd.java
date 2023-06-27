@@ -78,8 +78,8 @@ public class TaskAdd extends AppCompatActivity {
             if (rowId != -1) {
 
                 Toast.makeText(TaskAdd.this, "Task added successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
+                Intent intent = new Intent( TaskAdd.this,TaskList.class);
+                startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(TaskAdd.this, "Failed to add the task", Toast.LENGTH_SHORT).show();

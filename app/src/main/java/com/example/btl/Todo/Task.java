@@ -125,7 +125,7 @@ public class Task {
         return dbHelper.getTaskById(taskId);
     }
 
-    public void delete(Context context) {
+    public void delete(Context context,int taskId) {
         TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
         dbHelper.deleteTask(taskId);
     }

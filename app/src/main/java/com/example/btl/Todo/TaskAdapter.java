@@ -1,5 +1,6 @@
 package com.example.btl.Todo;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.btl.MainActivity;
 import com.example.btl.R;
 import java.util.List;
 
@@ -51,7 +54,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private TextView dateTextView;
         private Button statusBtn;
         private Button optionBtn;
-
+        private Button deleteBtn;
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
@@ -59,6 +62,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             dateTextView = itemView.findViewById(R.id.dateTextView);
             statusBtn = itemView.findViewById(R.id.statusBTN);
             optionBtn = itemView.findViewById(R.id.optionBtn);
+            deleteBtn = itemView.findViewById(R.id.deleteBtn);
         }
 
         public void bind(@NonNull Task task) {
@@ -76,6 +80,25 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 intent.putExtra("taskId", task.getTaskId());
                 context.startActivity(intent);
             });
+            deleteBtn.setOnClickListener(v -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Confirm Delete")
+                        .setMessage("Are you sure you want to delete this task?")
+                        .setPositiveButton("Delete", (dialog, which) -> {
+                            // Perform the delete operation here
+                            TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
+                            dbHelper.deleteTask(task.getTaskId());
+                            Intent intent = new Intent( context,TaskList.class);
+                            context.startActivity(intent);
+
+                        })
+                        .setNegativeButton("Cancel", (dialog, which) -> {
+                            // Cancel the delete operation or do nothing
+                        })
+                        .create()
+                        .show();
+            });
+
         }
     }
 }
