@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.btl.MainActivity;
 import com.example.btl.R;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class TaskList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TaskAdapter adapter;
     private ImageView calendar;
+    private ImageView logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class TaskList extends AppCompatActivity {
 
         Button btnAdd = findViewById(R.id.btnAdd);
         calendar = findViewById(R.id.calendar);
-
+        logout = findViewById(R.id.logout);
         // Fetch tasks from the database
         taskList = Task.getAll(this);
         if (taskList.isEmpty()) {
@@ -55,6 +57,10 @@ public class TaskList extends AppCompatActivity {
             Intent calendarIntent = new Intent(Intent.ACTION_VIEW);
             calendarIntent.setData(Uri.parse("content://com.android.calendar/time"));
             startActivity(calendarIntent);
+        });
+        logout.setOnClickListener(v -> {
+            Intent intent = new Intent(TaskList.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 }

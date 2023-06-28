@@ -59,6 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private Button statusBtn;
         private Button optionBtn;
         private Button deleteBtn;
+
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
