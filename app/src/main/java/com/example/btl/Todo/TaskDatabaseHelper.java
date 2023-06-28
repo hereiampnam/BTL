@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "2.db";
+    private static final String DATABASE_NAME = "todo_application.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME = "tasks";
