@@ -68,6 +68,7 @@ public class TaskUpdate extends AppCompatActivity {
         task.setTaskDescription(getTaskDescription.getText().toString());
         task.setEvent(getTaskEvent.getText().toString());
         task.setDate(buttonTaskDate.getText().toString());
+        task.setTime(buttonTaskTime.getText().toString());
         // Update the task in the database
         task.update(this);
         Intent intent = new Intent( TaskUpdate.this,TaskList.class);
@@ -96,7 +97,7 @@ public class TaskUpdate extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(TaskUpdate.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                String selectedTime = selectedHour + ":" + selectedMinute;
+                String selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute);
                 buttonTaskTime.setText(selectedTime);
             }
         }, hour, minute, false);

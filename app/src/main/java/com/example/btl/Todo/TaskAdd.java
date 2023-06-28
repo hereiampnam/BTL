@@ -49,27 +49,22 @@ public class TaskAdd extends AppCompatActivity {
                 Toast.makeText(TaskAdd.this, "Please enter a task description", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             if (taskDate.isEmpty()) {
                 Toast.makeText(TaskAdd.this, "Please select a task date", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             if (taskTime.isEmpty()) {
                 Toast.makeText(TaskAdd.this, "Please select a task time", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             // Create a new task object
             Task task = new Task();
             task.setTaskTitle(taskTitle);
-//            task.setTaskDescription("");
             task.setTaskDescription(taskDescription);
             task.setDate(taskDate);
+            task.setTime(taskTime);
             task.setComplete(false);
-            task.setFirstAlarmTime("");
-            task.setSecondAlarmTime("");
-            task.setLastAlarm("");
+
             task.setEvent("");
 
             // Save the task to your database
@@ -100,19 +95,15 @@ public class TaskAdd extends AppCompatActivity {
         }, year, month, day);
         datePickerDialog.show();
     }
-
     public void pickTime(View view) {
         // Get current time
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(TaskAdd.this, (view1, selectedHour, selectedMinute) -> {
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(TaskAdd.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                String selectedTime = selectedHour + ":" + selectedMinute;
+            String selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute);
                 buttonTaskTime.setText(selectedTime);
-            }
         }, hour, minute, false);
         timePickerDialog.show();
     }

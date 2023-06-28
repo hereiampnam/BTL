@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +53,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private TextView titleTextView;
         private TextView descriptionTextView;
         private TextView dateTextView;
+        private TextView timeTextView;
+
+
         private Button statusBtn;
         private Button optionBtn;
         private Button deleteBtn;
@@ -60,15 +64,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             titleTextView = itemView.findViewById(R.id.titleTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
+            timeTextView = itemView.findViewById(R.id.timeTextView);
             statusBtn = itemView.findViewById(R.id.statusBTN);
             optionBtn = itemView.findViewById(R.id.optionBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
+
         }
 
         public void bind(@NonNull Task task) {
             titleTextView.setText(task.getTaskTitle());
             descriptionTextView.setText(task.getTaskDescription());
             dateTextView.setText(task.getDate());
+            timeTextView.setText(task.getTime());
             statusBtn.setText(task.status(task.isComplete()));
             statusBtn.setOnClickListener(v -> {
                 task.setComplete(!task.isComplete());
@@ -93,7 +100,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
                         })
                         .setNegativeButton("Cancel", (dialog, which) -> {
-                            // Cancel the delete operation or do nothing
+
                         })
                         .create()
                         .show();

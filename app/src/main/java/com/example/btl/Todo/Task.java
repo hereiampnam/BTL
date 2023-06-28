@@ -7,23 +7,21 @@ public class Task {
     private int taskId;
     private String taskTitle;
     private String date;
-    private String month;
+    private String time;
     private String taskDescription;
     private boolean isComplete;
-    private String firstAlarmTime;
-    private String secondAlarmTime;
-    private String lastAlarm;
+//    private String firstAlarmTime;
+//    private String secondAlarmTime;
+//    private String lastAlarm;
     private String event;
 
     public Task() {
         this.taskId = 0;
         this.taskTitle = "";
         this.date = "";
+        this.time = "";
         this.taskDescription = "";
         this.isComplete = false;
-        this.firstAlarmTime = "";
-        this.secondAlarmTime = "";
-        this.lastAlarm = "";
         this.event = "";
     }
 
@@ -52,6 +50,12 @@ public class Task {
     public void setDate(String date) {
         this.date = date;
     }
+    public String getTime() {
+        return time;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
@@ -75,30 +79,6 @@ public class Task {
         } else {
             return "DONE";
         }
-    }
-
-    public String getFirstAlarmTime() {
-        return firstAlarmTime;
-    }
-
-    public void setFirstAlarmTime(String firstAlarmTime) {
-        this.firstAlarmTime = firstAlarmTime;
-    }
-
-    public String getSecondAlarmTime() {
-        return secondAlarmTime;
-    }
-
-    public void setSecondAlarmTime(String secondAlarmTime) {
-        this.secondAlarmTime = secondAlarmTime;
-    }
-
-    public String getLastAlarm() {
-        return lastAlarm;
-    }
-
-    public void setLastAlarm(String lastAlarm) {
-        this.lastAlarm = lastAlarm;
     }
 
     public String getEvent() {
@@ -125,10 +105,6 @@ public class Task {
         return dbHelper.getTaskById(taskId);
     }
 
-    public void delete(Context context,int taskId) {
-        TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
-        dbHelper.deleteTask(taskId);
-    }
 
     public void update(Context context) {
         TaskDatabaseHelper dbHelper = new TaskDatabaseHelper(context);
