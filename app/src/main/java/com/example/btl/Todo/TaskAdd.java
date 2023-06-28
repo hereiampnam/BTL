@@ -23,6 +23,7 @@ public class TaskAdd extends AppCompatActivity {
     private EditText editTextTaskDescription;
     private Button buttonTaskDate;
     private Button buttonTaskTime;
+    private EditText editTextTaskEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,13 @@ public class TaskAdd extends AppCompatActivity {
         buttonSave = findViewById(R.id.addTask);
         buttonTaskDate = findViewById(R.id.taskDate);
         buttonTaskTime = findViewById(R.id.taskTime);
-
+        editTextTaskEvent = findViewById(R.id.taskEvent);
         buttonSave.setOnClickListener(v -> {
             String taskTitle = editTextTaskTitle.getText().toString();
             String taskDate = buttonTaskDate.getText().toString();
             String taskTime = buttonTaskTime.getText().toString();
             String taskDescription = editTextTaskDescription.getText().toString();
-
+            String taskEvent =editTextTaskEvent.getText().toString();
             // Validate task data
             if (taskTitle.isEmpty()) {
                 Toast.makeText(TaskAdd.this, "Please enter a task title", Toast.LENGTH_SHORT).show();
@@ -64,8 +65,7 @@ public class TaskAdd extends AppCompatActivity {
             task.setDate(taskDate);
             task.setTime(taskTime);
             task.setComplete(false);
-
-            task.setEvent("");
+            task.setEvent(taskEvent);
 
             // Save the task to your database
             long rowId = task.save(TaskAdd.this);

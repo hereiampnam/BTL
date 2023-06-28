@@ -10,9 +10,7 @@ public class Task {
     private String time;
     private String taskDescription;
     private boolean isComplete;
-//    private String firstAlarmTime;
-//    private String secondAlarmTime;
-//    private String lastAlarm;
+
     private String event;
 
     public Task() {

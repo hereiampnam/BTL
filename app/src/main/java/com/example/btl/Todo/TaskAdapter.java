@@ -55,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         private TextView dateTextView;
         private TextView timeTextView;
 
-
+        private TextView eventTextView;
         private Button statusBtn;
         private Button optionBtn;
         private Button deleteBtn;
@@ -68,6 +68,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             statusBtn = itemView.findViewById(R.id.statusBTN);
             optionBtn = itemView.findViewById(R.id.optionBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
+            eventTextView = itemView.findViewById(R.id.eventTextView);
 
         }
 
@@ -76,6 +77,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             descriptionTextView.setText(task.getTaskDescription());
             dateTextView.setText(task.getDate());
             timeTextView.setText(task.getTime());
+            eventTextView.setText(task.getEvent());
             statusBtn.setText(task.status(task.isComplete()));
             statusBtn.setOnClickListener(v -> {
                 task.setComplete(!task.isComplete());
